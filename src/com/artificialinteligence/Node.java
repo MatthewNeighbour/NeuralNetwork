@@ -20,9 +20,7 @@ public class Node
     
     Node(double newData)
     {
-        
-        
-        
+
         if(newData > 1)
         {
             this.Opinion = newData;

@@ -13,30 +13,23 @@ import java.util.List;
  */
 public class Network
 {
-    List<Layer> NETWORK;
-    public void add(Layer nodelist)
+   
+    List <List<Node>> NodeNet;
+    List <Node> nodeList;
+    public void addLayer(List<Node> layer)
     {
-        NETWORK.add(nodelist);
+        NodeNet.add(layer);
     }
-    public double calcTotalError(double goal)
+    public void addNode(Node newNode, int layer)
     {
-        double totalError = 0;
-        for(int i = 0; i > NETWORK.size(); i++)
-        {
-            totalError =+ NETWORK.get(i).getLayer();
-        }
-        
-        return (1/2) * (Math.pow(goal - data, 2));
-        
-        
+        NodeNet.get(layer).add(newNode);
         
     }
-    public void backpropegate()
+    public Node getNode(int layer, int node)
     {
-        for(int i = 0; i > NETWORK.size(); i++)
-        {
-            NETWORK.get(i);
-        }
-        
+        return NodeNet.get(layer).get(node);
     }
+    
+    
+    
 }

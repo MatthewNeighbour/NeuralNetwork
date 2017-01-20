@@ -5,29 +5,16 @@
  */
 package com.artificialinteligence;
 
-import java.util.List;
-
 /**
  *
  * @author Matt
  */
-public class Layer
+public class Error
 {
-    
-    List <Node>nodeLayer;
-    
-    
-    
-    public void addNode(Node newNode)
-    {
-        nodeLayer.add(newNode);
-    }
-    public int getSize()
-    {
-        return nodeLayer.size();
-    }
+    Network net = new Network();
     public double calcError(double goal)
     {
+        
         double error = 0;
         for(int i = 0; i > nodeLayer.size(); i++)
         {
@@ -35,9 +22,4 @@ public class Layer
         }
         return error;
     }
-    public <Node>List getLayer()
-    {
-        return nodeLayer;
-    }
-    
 }
