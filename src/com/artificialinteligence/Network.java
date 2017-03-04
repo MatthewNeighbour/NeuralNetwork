@@ -13,9 +13,9 @@ import java.util.List;
  */
 public class Network
 {
-   
-    List <List<Node>> NodeNet;
-    List <Node> nodeList;
+    double TotalError;
+    private List <List<Node>> NodeNet;
+    //List <Node> nodeList;
     public void addLayer(List<Node> layer)
     {
         NodeNet.add(layer);
@@ -29,7 +29,18 @@ public class Network
     {
         return NodeNet.get(layer).get(node);
     }
-    
-    
+    public double getOutput()
+    {
+        return NodeNet.get(0).get(0).fire();
+    }
+    public double calcTotalError(double goal)
+    {
+        TotalError = getOutput() - goal;
+        return TotalError;
+    }
+    public double getTotalError()
+    {
+        return TotalError;
+    }
     
 }

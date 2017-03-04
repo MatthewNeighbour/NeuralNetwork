@@ -12,11 +12,13 @@ import java.util.Random;
  */
 public class Node
 {
+    private double LearningRate = 0.5;
     private double Opinion;
     private final ArrayList <Synapse>LINK = new ArrayList();
     private double bias = .5;   // figure 1 * weight. weight being .5
     private final Random rand = new Random();
     double weight;
+    Network NodeNet;
     
     Node(double newData)
     {
@@ -37,6 +39,10 @@ public class Node
     Node()
     {
         
+    }
+    Node(Network net)
+    {
+        addNet(net);
     }
     public double getData()
     {
@@ -67,7 +73,10 @@ public class Node
 //            LINK.get(iLink).getParent().calcOutput();
 //        }
 //    }
-   
+    public void addNet(Network net)    
+    {
+        this.NodeNet = net;
+    }
     public void addChild(Node newChild)
     {
         double randomNum = rand.nextDouble();
@@ -102,9 +111,14 @@ public class Node
     {
         this.Opinion = newOpinion;
     }
-    public double calcError(double goal)
+    public double calcError(double goal) // i think this is useless
     {
         return (1/2) * (Math.pow(goal - Opinion, 2));
     }
-    
+    public double weightError(int weightNum)
+    {
+        return (NodeNet.TotalError / fire()) *  
+                (fire() / calcOutput()) * 
+                (calcOutput() / LINK.get(weightNum).getWeight());
+    }
 }
